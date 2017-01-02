@@ -1,0 +1,9 @@
+image: "ruby:2.3"
+
+stages:
+  - test
+
+test_job:
+  stage: test
+  script:
+  - rake
