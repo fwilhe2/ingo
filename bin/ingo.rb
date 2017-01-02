@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'fileutils'
+
 module Ingo
   class AsciidocLink
 
@@ -12,4 +14,9 @@ module Ingo
       "link:#{@reference}[#{@text}]"
     end
   end
+
+  def output_file_name(input_file_name)
+    File.basename(input_file_name, '.*') + '.html'
+  end
+
 end
