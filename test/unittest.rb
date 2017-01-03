@@ -1,5 +1,6 @@
-require "test/unit"
-require_relative "../bin/ingo"
+require 'test/unit'
+require 'fileutils'
+require_relative '../bin/ingo'
 
 class TestIngo < Test::Unit::TestCase
 
@@ -26,5 +27,19 @@ class TestIngo < Test::Unit::TestCase
     expected << ''
 
     assert_equal(expected, Class.new.extend(Ingo).list_of_topics('test/fixtures/docs/foo/a.adoc'))
+  end
+
+  def test_convert_directory
+    # when
+    Class.new.extend(Ingo).convert_directory('test/fixtures')
+
+    # expect
+    actual = File.read 'test/fixtures/output/a.html'
+
+    assert(actual.include?('Last updated '), 'Output does not contain a footer')
+    assert(actual.include?('<a href="b-index.html">b</a>'), 'Output does not contain a index link')
+
+    # cleanup
+    FileUtils.rm_r 'test/fixtures/output'
   end
 end
