@@ -4,8 +4,7 @@ require_relative "../bin/ingo"
 class TestIngo < Test::Unit::TestCase
 
   def test_asciidoc_link
-    link = Ingo::AsciidocLink.new("myref", "mytext")
-    assert_equal('link:myref[mytext]', link.to_s)
+    assert_equal('link:myref[mytext]', Class.new.extend(Ingo).asciidoc_link('myref', 'mytext'))
   end
 
   def test_output_file_name
