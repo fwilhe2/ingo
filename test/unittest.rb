@@ -14,4 +14,17 @@ class TestIngo < Test::Unit::TestCase
   def test_topics
     assert_equal(%w(a b c), Class.new.extend(Ingo).topics('test/fixtures/docs/foo/a.adoc'))
   end
+
+  def test_list_of_topics
+    expected = []
+    expected << ''
+    expected << 'Topics:'
+    expected << ''
+    expected << 'link:a-index.html[a] '
+    expected << 'link:b-index.html[b] '
+    expected << 'link:c-index.html[c] '
+    expected << ''
+
+    assert_equal(expected, Class.new.extend(Ingo).list_of_topics('test/fixtures/docs/foo/a.adoc'))
+  end
 end
