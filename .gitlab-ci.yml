@@ -6,4 +6,5 @@ stages:
 test_job:
   stage: test
   script:
+  - bundle install
   - rake
