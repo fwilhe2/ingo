@@ -11,4 +11,7 @@ class TestIngo < Test::Unit::TestCase
     assert_equal('test.html', Class.new.extend(Ingo).output_file_name('test.adoc'))
   end
 
+  def test_topics
+    assert_equal(%w(a b c), Class.new.extend(Ingo).topics('test/fixtures/docs/foo/a.adoc'))
+  end
 end

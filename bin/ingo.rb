@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'asciidoctor'
 require 'fileutils'
 
 module Ingo
@@ -10,6 +11,10 @@ module Ingo
 
   def output_file_name(input_file_name)
     File.basename(input_file_name, '.*') + '.html'
+  end
+
+  def topics(document)
+    Asciidoctor.load_file(document).attributes['topics'].split(", ")
   end
 
 end
