@@ -33,13 +33,13 @@ module Ingo
   end
 
   def convert_directory(base_directory)
-    Dir.glob base_directory + '/docs/**/*.adoc' do |document|
+    Dir.glob(File.join(base_directory, 'docs/**/*.adoc')) do |document|
       lines = File.readlines(document)
       lines += list_of_topics(document)
       ad_doc = Asciidoctor::Document.new(lines, header_footer: true, safe: 'unsafe')
       html = ad_doc.convert
-      FileUtils.mkdir_p(base_directory + "/output")
-      File.open(base_directory + '/output/' + output_file_name(document), "w+") do |file|
+      FileUtils.mkdir_p(File.join(base_directory, 'output'))
+      File.open(File.join(base_directory, 'output', output_file_name(document)), 'w+') do |file|
         file.puts html
       end
     end
