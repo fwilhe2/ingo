@@ -44,7 +44,49 @@ module Ingo
       end
     end
   end
+
+  def create_index_files(base_directory)
+    topics = Hash.new
+    Dir.glob base_directory + '/docs/**/*.adoc' do |doc|
+      asciidoctor_document = Asciidoctor.load_file doc
+      this_topics = asciidoctor_document.attributes['topics'].split(", ")
+      this_topics.each do |t|
+        if topics[t].nil?
+          topics[t] = []
+        end
+        topics[t] << output_file_name(doc)
+      end
+
+    end
+
+    meta_index = <<END
+= Index
+
+END
+
+    # create index files
+    topics.each do |t, docs|
+      meta_index += "* #{asciidoc_link(t + '-index.html', t)}\n"
+      index = <<END
+== Index of #{t}
+
+END
+      docs.each do |doc|
+        index += "* #{asciidoc_link(doc, File.basename(doc, '.*'))}\n"
+      end
+      html = Asciidoctor.convert(index, header_footer: true, safe: 'unsafe')
+      File.open(base_directory + '/output/' + t + '-index.html', 'w') do |f|
+        f.write(html)
+      end
+
+    end
+    html = Asciidoctor.convert(meta_index, header_footer: true, safe: 'unsafe')
+    File.open(base_directory + '/output/index.html', 'w') do |f|
+      f.write(html)
+    end
+  end
 end
 
-#base_dir = ARGV[0]
-#Class.new.extend(Ingo).convert_directory(base_dir)
+#base_directory = ARGV[0]
+#Class.new.extend(Ingo).convert_directory(base_directory)
+#Class.new.extend(Ingo).create_index_files(base_directory)
