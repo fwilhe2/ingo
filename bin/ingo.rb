@@ -94,6 +94,11 @@ END
       f.write(html)
     end
   end
+
+  def run(base_directory)
+    convert_directory(base_directory)
+    create_index_files(base_directory)
+  end
 end
 
 #base_directory = ARGV[0]

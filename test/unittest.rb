@@ -29,15 +29,19 @@ class TestIngo < Test::Unit::TestCase
     assert_equal(expected, Class.new.extend(Ingo).list_of_topics('test/fixtures/docs/foo/a.adoc'))
   end
 
-  def test_convert_directory
+  def test_run
     # when
-    Class.new.extend(Ingo).convert_directory('test/fixtures')
+    Class.new.extend(Ingo).run('test/fixtures')
 
     # expect
-    actual = File.read 'test/fixtures/output/a.html'
+    actual_a = File.read 'test/fixtures/output/a.html'
+    assert(actual_a.include?('Last updated '), 'Output does not contain a footer')
+    assert(actual_a.include?('<a href="b-index.html">b</a>'), 'Output does not contain a index link')
 
-    assert(actual.include?('Last updated '), 'Output does not contain a footer')
-    assert(actual.include?('<a href="b-index.html">b</a>'), 'Output does not contain a index link')
+    actual_b_index = File.read 'test/fixtures/output/b-index.html'
+    assert(actual_b_index.include?('Last updated '), 'Output does not contain a footer')
+    assert(actual_b_index.include?('<p><a href="a.html">a</a></p>'), 'Index file does not link to content file')
+
 
     # cleanup
     FileUtils.rm_r 'test/fixtures/output'
