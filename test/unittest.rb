@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'fileutils'
-require_relative '../bin/ingo'
+require_relative '../lib/ingo'
 
 class TestIngo < Test::Unit::TestCase
 

@@ -100,7 +100,3 @@ END
     create_index_files(base_directory)
   end
 end
-
-#base_directory = ARGV[0]
-#Class.new.extend(Ingo).convert_directory(base_directory)
-#Class.new.extend(Ingo).create_index_files(base_directory)
