@@ -1,1 +1,13 @@
 = Ingo: A static site generator built on http://asciidoctor.org/[Asciidoctor]
+
+.Install dependencies
+----
+bundle install
+----
+
+.Run tests
+----
+rake
+----
+
+
