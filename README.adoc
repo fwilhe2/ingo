@@ -10,4 +10,7 @@ bundle install
 rake
 ----
 
-
+.Run program
+----
+bin/ingo path [more paths]
+----

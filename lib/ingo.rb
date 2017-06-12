@@ -23,9 +23,13 @@ module Ingo
     lines << 'Topics:'
     lines << ''
     asciidoctor_document = Asciidoctor.load_file(document)
-    topics = asciidoctor_document.attributes['topics'].split(', ')
-    topics.each do |t|
-      lines << "#{asciidoc_link(t + '-index.html', t)} "
+    if asciidoctor_document.attributes['topics']
+      topics = asciidoctor_document.attributes['topics'].split(', ')
+      topics.each do |t|
+        lines << "#{asciidoc_link(t + '-index.html', t)} "
+      end
+    else
+      puts "#{document} has no topics"
     end
     lines << ''
 
@@ -59,12 +63,14 @@ END
     topics = Hash.new
     Dir.glob base_directory + '/docs/**/*.adoc' do |doc|
       asciidoctor_document = Asciidoctor.load_file doc
-      this_topics = asciidoctor_document.attributes['topics'].split(", ")
-      this_topics.each do |t|
-        if topics[t].nil?
-          topics[t] = []
+      if asciidoctor_document.attributes['topics']
+        this_topics = asciidoctor_document.attributes['topics'].split(", ")
+        this_topics.each do |t|
+          if topics[t].nil?
+            topics[t] = []
+          end
+          topics[t] << output_file_name(doc)
         end
-        topics[t] << output_file_name(doc)
       end
     end
     topics
