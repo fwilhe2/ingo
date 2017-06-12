@@ -46,6 +46,16 @@ module Ingo
   end
 
   def create_index_files(base_directory)
+    topics = populate_topics(base_directory)
+    meta_index = <<END
+= Index
+
+END
+    meta_index = write_indexes(base_directory, meta_index, topics)
+    write_meta_index(base_directory, meta_index)
+  end
+
+  def populate_topics(base_directory)
     topics = Hash.new
     Dir.glob base_directory + '/docs/**/*.adoc' do |doc|
       asciidoctor_document = Asciidoctor.load_file doc
@@ -56,15 +66,11 @@ module Ingo
         end
         topics[t] << output_file_name(doc)
       end
-
     end
+    topics
+  end
 
-    meta_index = <<END
-= Index
-
-END
-
-    # create index files
+  def write_indexes(base_directory, meta_index, topics)
     topics.each do |t, docs|
       meta_index += "* #{asciidoc_link(t + '-index.html', t)}\n"
       index = <<END
@@ -78,8 +84,11 @@ END
       File.open(base_directory + '/output/' + t + '-index.html', 'w') do |f|
         f.write(html)
       end
-
     end
+    meta_index
+  end
+
+  def write_meta_index(base_directory, meta_index)
     html = Asciidoctor.convert(meta_index, header_footer: true, safe: 'unsafe')
     File.open(base_directory + '/output/index.html', 'w') do |f|
       f.write(html)
