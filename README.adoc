@@ -17,6 +17,10 @@ Think of topics as "Categories" in wikipedia.
 Ingo is meant to provide an alternative to wikis for note taking for individuals and teams.
 In combination with Github/Gitlab and a CI service it can provide a similar experience for technical users.
 
+Note that the files *must* be in a `docs` subdirectory of the project directory.
+The resulting files are written to `output`.
+An example project can be found at https://gitlab.com/fwilhe/berlin.
+
 == How to build
 
 .Install dependencies
