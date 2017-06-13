@@ -1,5 +1,24 @@
 = Ingo: A static site generator built on http://asciidoctor.org/[Asciidoctor]
 
+Ingo converts AsciiDoc files in a directory and converts them using http://asciidoctor.org/[Asciidoctor].
+It is built for collecting notes in AciiDoc format and presenting them.
+
+It is recommended to add `topics` to each file.
+
+For example
+
+----
+:topics: gardening, hobby, shopping
+----
+
+defines three topics.
+Ingo will create an index file for each topic linking to all documents with that topic.
+Think of topics as "Categories" in wikipedia.
+Ingo is meant to provide an alternative to wikis for note taking for individuals and teams.
+In combination with Github/Gitlab and a CI service it can provide a similar experience for technical users.
+
+== How to build
+
 .Install dependencies
 ----
 bundle install
@@ -10,7 +29,13 @@ bundle install
 rake
 ----
 
+== How to run
+
 .Run program
 ----
 bin/ingo path [more paths]
 ----
+
+== The name
+
+Yes, I was thinking about https://gohugo.io/[Hugo] and just took another male name.
