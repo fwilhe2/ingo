@@ -39,3 +39,14 @@ bin/ingo path [more paths]
 == The name
 
 Yes, I was thinking about https://gohugo.io/[Hugo] and just took another male name.
+
+== Release process
+
+This is still work in progress.
+It needs automation wherever possible.
+
+* Update changelog for upcoming release
+* Remove `.unreleased` suffix from version and commit as "prepare release"
+* Create and push git tag with the version number
+* Build and publish the artifact(s)
+* Update version and append `.unreleased` and commit as "prepare for next development iteration"
