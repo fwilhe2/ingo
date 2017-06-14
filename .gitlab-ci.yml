@@ -7,4 +7,4 @@ test_job:
   stage: test
   script:
   - bundle install
-  - rake
+  - bundle exec rake test

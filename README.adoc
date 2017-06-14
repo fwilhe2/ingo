@@ -30,7 +30,7 @@ bundle install
 
 .Run tests
 ----
-rake
+bundle exec rake test
 ----
 
 == How to run
