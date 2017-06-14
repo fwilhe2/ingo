@@ -2,12 +2,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     asciidoctor (1.5.5)
+    rake (12.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   asciidoctor
+  rake
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
