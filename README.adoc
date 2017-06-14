@@ -2,8 +2,20 @@
 
 image:https://badge.fury.io/rb/ingo.svg["Gem Version", link="https://badge.fury.io/rb/ingo"]
 
-Ingo converts AsciiDoc files in a directory and converts them using http://asciidoctor.org/[Asciidoctor].
+Ingo converts AsciiDoc files in a directory to HTML using http://asciidoctor.org/[Asciidoctor] and creates index files.
 It is built for collecting notes in AciiDoc format and presenting them.
+
+If you are looking for a general purpose static site generator, I recommend looking at https://jekyllrb.com/[Jekyll] or https://gohugo.io/[Hugo].
+
+== Usage
+
+Ingo operates on a directory.
+It takes all `*.adoc` files inside the `docs` directory into account and writes `*.html` files to `output`.
+
+.Run Ingo
+----
+ingo path/to/my/notes
+----
 
 It is recommended to add `topics` to each file.
 
@@ -15,12 +27,10 @@ For example
 
 defines three topics.
 Ingo will create an index file for each topic linking to all documents with that topic.
-Think of topics as "Categories" in wikipedia.
+Think of topics as "Categories" in a wiki.
 Ingo is meant to provide an alternative to wikis for note taking for individuals and teams.
 In combination with Github/Gitlab and a CI service it can provide a similar experience for technical users.
 
-Note that the files *must* be in a `docs` subdirectory of the project directory.
-The resulting files are written to `output`.
 An example project can be found at https://gitlab.com/fwilhe/berlin.
 
 == How to build
@@ -33,13 +43,6 @@ bundle install
 .Run tests
 ----
 bundle exec rake test
-----
-
-== How to run
-
-.Run program
-----
-bin/ingo path
 ----
 
 == The name
