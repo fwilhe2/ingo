@@ -2,7 +2,19 @@
 
 require_relative '../lib/ingo'
 
-ARGV.each do |base_directory|
-  Class.new.extend(Ingo).convert_directory(base_directory)
-  Class.new.extend(Ingo).create_index_files(base_directory)
+base_directory = ARGV[0]
+
+if base_directory.nil?
+  puts 'This is ingo. Please provide a input directory like "ingo path/to/my/notes"'
+else
+  if File.directory?(base_directory)
+    if File.directory?(base_directory + '/docs')
+      Class.new.extend(Ingo).convert_directory(base_directory)
+      Class.new.extend(Ingo).create_index_files(base_directory)
+    else
+      puts "#{base_directory}/docs is not a directory. Please consult the documentation."
+    end
+  else
+    puts "#{base_directory} is not a directory"
+  end
 end

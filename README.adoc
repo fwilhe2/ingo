@@ -37,7 +37,7 @@ bundle exec rake test
 
 .Run program
 ----
-bin/ingo path [more paths]
+bin/ingo path
 ----
 
 == The name
