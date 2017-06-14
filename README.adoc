@@ -1,5 +1,7 @@
 = Ingo: A static site generator built on http://asciidoctor.org/[Asciidoctor]
 
+image:https://badge.fury.io/rb/ingo.svg["Gem Version", link="https://badge.fury.io/rb/ingo"]
+
 Ingo converts AsciiDoc files in a directory and converts them using http://asciidoctor.org/[Asciidoctor].
 It is built for collecting notes in AciiDoc format and presenting them.
 
