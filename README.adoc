@@ -51,6 +51,5 @@ It needs automation wherever possible.
 
 * Update changelog for upcoming release
 * Remove `.unreleased` suffix from version and commit as "prepare release"
-* Create and push git tag with the version number
-* Build and publish the artifact(s)
+* `bundle exec rake release` (Creates and pushes the git tag and releases the artifact to ruby gems)
 * Update version and append `.unreleased` and commit as "prepare for next development iteration"
