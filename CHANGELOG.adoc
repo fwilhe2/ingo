@@ -2,6 +2,10 @@
 
 == Unreleased
 
+=== Fixes
+
+* Include `VERSION` file in artifact
+
 == 0.0.1 (2017-06-14)
 
 First version with initial feature set.
