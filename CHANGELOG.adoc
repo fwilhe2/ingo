@@ -2,6 +2,10 @@
 
 == Unreleased
 
+=== Features
+
+* Add Docker image for use in production
+
 === Fixes
 
 * Include `VERSION` file in artifact

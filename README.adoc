@@ -45,6 +45,15 @@ bundle install
 bundle exec rake test
 ----
 
+== Docker
+
+It is also possible to use ingo in a container
+
+.Example command to run ingo in Docker
+----
+docker run -v /path/to/docs:/documents/ registry.gitlab.com/fwilhe/ingo/image ingo .
+----
+
 == The name
 
 Yes, I was thinking about https://gohugo.io/[Hugo] and just took another male name.
