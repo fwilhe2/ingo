@@ -39,12 +39,9 @@ jobs:
 
     - name: Build and Publish Docker Image
       run: |
-        touch $HOME/.credentials
-        chmod 0600 $HOME/.credentials
-        printf -- "${GEM_HOST_API_KEY}" > $HOME/.credentials
+        docker login -u ${OWNER} -p ${GPR_AUTH_TOKEN}
         docker build -t docker.pkg.github.com/fwilhe2/ingo/ingo:latest docker/production
-        cat $HOME/.credentials | docker login -u ${OWNER} --password-stdin
         docker push docker.pkg.github.com/fwilhe2/ingo/ingo:latest
       env:
-        GEM_HOST_API_KEY: ${{secrets.GPR_AUTH_TOKEN}}
+        GPR_AUTH_TOKEN: ${{secrets.GPR_AUTH_TOKEN}}
         OWNER: fwilhe2
