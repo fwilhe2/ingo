@@ -1,4 +1,4 @@
-FROM ruby:2.3
+FROM ruby:2.6
 LABEL maintainer="Florian Wilhelm"
 
 RUN gem install asciidoctor ingo
