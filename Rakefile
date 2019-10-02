@@ -5,9 +5,9 @@ task :test do
 end
 
 task :build_docker_image do
-  sh 'docker build -t registry.gitlab.com/fwilhe/ingo/image docker/production'
+  sh 'docker build -t docker.pkg.github.com/fwilhe2/ingo/ingo:latest docker/production'
 end
 
 task :push_docker_image => :build_docker_image do
-  sh 'docker push registry.gitlab.com/fwilhe/ingo/image'
+  sh 'docker push docker.pkg.github.com/fwilhe2/ingo/ingo:latest'
 end

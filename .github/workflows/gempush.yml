@@ -40,8 +40,7 @@ jobs:
     - name: Build and Publish Docker Image
       run: |
         echo ${GPR_AUTH_TOKEN} | docker login docker.pkg.github.com -u ${OWNER} --password-stdin
-        docker build -t docker.pkg.github.com/fwilhe2/ingo/ingo:latest docker/production
-        docker push docker.pkg.github.com/fwilhe2/ingo/ingo:latest
+        bundle exec rake push_docker_image
       env:
         GPR_AUTH_TOKEN: ${{secrets.GPR_AUTH_TOKEN}}
         OWNER: fwilhe2
