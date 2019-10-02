@@ -36,3 +36,8 @@ jobs:
       env:
         GEM_HOST_API_KEY: ${{secrets.GPR_AUTH_TOKEN}}
         OWNER: fwilhe2
+
+    - name: Build and Publish Docker Image
+      run: |
+        docker build -t docker.pkg.github.com/fwilhe2/ingo/ingo:latest docker/production
+        docker push docker.pkg.github.com/fwilhe2/ingo/ingo:latest
