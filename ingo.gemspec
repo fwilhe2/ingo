@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.authors = ['Florian Wilhelm']
   s.email = 'florian-wilhelm@onlinehome.de'
   s.files = %w(bin/ingo lib/ingo.rb README.adoc CHANGELOG.adoc LICENSE VERSION)
-  s.homepage = 'https://gitlab.com/fwilhe/ingo'
-  s.add_runtime_dependency 'asciidoctor', '~> 1.5'
+  s.homepage = 'https://github.com/fwilhe2/ingo'
+  s.add_runtime_dependency 'asciidoctor', '~> 2.0.10'
   s.bindir = 'bin'
   s.executables << 'ingo'
 end
