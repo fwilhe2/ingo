@@ -12,3 +12,4 @@ Gem::Specification.new do |s|
   s.bindir = 'bin'
   s.executables << 'ingo'
 end
+
