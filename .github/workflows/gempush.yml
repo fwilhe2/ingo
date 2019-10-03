@@ -1,12 +1,6 @@
 name: Build + Publish
 
-on:
-  pull_request:
-    branches:
-      - master
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   build:
@@ -26,6 +20,7 @@ jobs:
         bundle exec rake test
 
     - name: Publish to GPR
+      if: github.ref == 'refs/heads/master'
       run: |
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials
@@ -38,6 +33,7 @@ jobs:
         OWNER: fwilhe2
 
     - name: Build and Publish Docker Image
+      if: github.ref == 'refs/heads/master'
       run: |
         echo ${GPR_AUTH_TOKEN} | docker login docker.pkg.github.com -u ${OWNER} --password-stdin
         bundle exec rake push_docker_image
